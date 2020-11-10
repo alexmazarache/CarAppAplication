@@ -1,0 +1,7 @@
+{
+  "name": "ionicAppMaz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
