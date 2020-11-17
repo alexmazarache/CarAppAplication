@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonDatetime, IonItem, IonLabel, IonTitle } from '@ionic/react';
+import { IonCard, IonCardContent,  IonSearchbar, IonCardHeader, IonCardSubtitle, IonCardTitle, IonDatetime, IonItem, IonLabel, IonTitle } from '@ionic/react';
 import { CarProps } from './CarProps';
 
 interface PostPropsExt extends CarProps {
@@ -8,6 +8,7 @@ interface PostPropsExt extends CarProps {
 
 const Car: React.FC<PostPropsExt> = ({ _id, text, title, version, edited, date,  onEdit }) => {
     let editedLabel;
+    
     console.log("Mofidied!!! ->" + edited);
     if(edited == true){
         editedLabel = <IonLabel> Version {version}, Edited</IonLabel>
