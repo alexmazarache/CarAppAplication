@@ -25,8 +25,6 @@ import './theme/variables.css';
 import { CarProvider } from './todo/CarProvider';
 import { AuthProvider, Login, PrivateRoute } from './auth';
 import { CarEdit, CarList } from './todo';
-import Home from './pages/Home';
-import { ellipse, triangle } from 'ionicons/icons';
 
 
 const App: React.FC = () => (
