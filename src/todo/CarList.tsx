@@ -34,14 +34,13 @@ const log = getLogger('ItemList');
 const CarList: React.FC<RouteComponentProps> = ({ history }) => {
   
   
-    const { items, fetching, fetchingError } = useContext(ItemContext);
-    log('render');
+  const { items, fetching, fetchingError, getNext, disableInfiniteScroll } = useContext(ItemContext);
+  log('render');
   
   
   const [cars,setCars] = useState<string>('');
   const [searchCar, setSearchCar] = useState<string>('');
-  const [disableInfiniteScroll, setDisableInfiniteScroll] = useState<boolean>(false);
-
+  
   const { logout } = useContext(AuthContext);
   const handleLogout = () => {
    console.log("handleLogout");
@@ -119,8 +118,8 @@ const CarList: React.FC<RouteComponentProps> = ({ history }) => {
           <div>{fetchingError.message || 'Failed to fetch items'}</div>
         )}
         
-         <IonInfiniteScroll threshold="10px" disabled={disableInfiniteScroll}
-                           onIonInfinite={(e: CustomEvent<void>) => searchNext(e)}>
+        <IonInfiniteScroll threshold="100px" disabled={disableInfiniteScroll}
+                           onIonInfinite={(e: CustomEvent<void>) => getNext?.(e, items)}>
           <IonInfiniteScrollContent
             loadingText="Loading more CARS...">
           </IonInfiniteScrollContent>
