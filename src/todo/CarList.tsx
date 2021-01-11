@@ -41,7 +41,7 @@ const CarList: React.FC<RouteComponentProps> = ({ history }) => {
   const { appState } = useAppState();
   const { networkStatus } = useNetwork();
 
-  const { items, fetching, fetchingError,serverOnline, getNext, disableInfiniteScroll } = useContext(ItemContext);
+  const { items, fetching, fetchingError, getNext, disableInfiniteScroll } = useContext(ItemContext);
   log('render');
   
   
@@ -94,7 +94,7 @@ const CarList: React.FC<RouteComponentProps> = ({ history }) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle className='square-a'>Car List {serverOnline ? '(online)' : '(offline)' }</IonTitle>
+          <IonTitle className='square-a'>Car List </IonTitle>
         
           <IonSearchbar value={searchCar}
           debounce={1000}
