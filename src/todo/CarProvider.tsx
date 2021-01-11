@@ -96,7 +96,7 @@ export const CarProvider: React.FC<ItemProviderProps> = ({ children }) => {
   );
 
   async function getMoreItems($event: CustomEvent<void>, items?: CarProps[]){
-    debugger;
+   // debugger;
     let lista = []
     for(var i=0; i<3; i++){
       const post : CarProps = {
@@ -105,13 +105,17 @@ export const CarProvider: React.FC<ItemProviderProps> = ({ children }) => {
         date: new Date().toISOString(),
         version: i,
         edited: false,
-        text: "Marca Exemplu"
+        text: "Marca Exemplu",
+        photoPath:"",
+        latitude:0,
+        longitude:0
       }
       lista.push(post);
+      console.log("PUSH :" + post.text + post.title)
     }
     dispatch({type: MORE_ITEMS, payload: {items: items?.concat(lista)} });
     ($event.target as HTMLIonInfiniteScrollElement).complete();
-  } 
+  }
 
   function getItemsEffect() {
     let canceled = false;
@@ -139,7 +143,7 @@ export const CarProvider: React.FC<ItemProviderProps> = ({ children }) => {
           });
         }
       } catch (error) {
-        
+
         const {Storage} = Plugins;
         const itemsS = await Storage.get({key: 'items'});
         if(itemsS.value){
